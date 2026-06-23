@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface TextRevealProps {
@@ -10,19 +9,8 @@ interface TextRevealProps {
 }
 
 export default function TextReveal({ text, className, delay = 0 }: TextRevealProps) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
   if (!text || typeof text !== "string") return null;
 
-  if (isMobile) {
-    return <span className={className || ""}>{text}</span>;
-  }
-
-  // Split text into words to prevent letter-by-letter wrapping on mobile
   const words = text.split(" ");
 
   const container = {
@@ -55,29 +43,37 @@ export default function TextReveal({ text, className, delay = 0 }: TextRevealPro
   };
 
   return (
-    <motion.span
-      className={`inline-block ${className || ""}`}
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-10px" }}
-    >
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block whitespace-nowrap">
-          {word.split("").map((char, charIndex) => (
-            <motion.span
-              className="inline-block"
-              variants={child}
-              key={charIndex}
-            >
-              {char}
-            </motion.span>
-          ))}
-          {/* Add a spacing between words that allows wrapping */}
-          {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-        </span>
-      ))}
-    </motion.span>
+    <>
+      {/* Static text for mobile (hidden on tablet/desktop) */}
+      <span className={`inline-block md:hidden ${className || ""}`}>
+        {text}
+      </span>
+
+      {/* Animated text for desktop (hidden on mobile) */}
+      <motion.span
+        className={`hidden md:inline-block ${className || ""}`}
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-10px" }}
+      >
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block whitespace-nowrap">
+            {word.split("").map((char, charIndex) => (
+              <motion.span
+                className="inline-block"
+                variants={child}
+                key={charIndex}
+              >
+                {char}
+              </motion.span>
+            ))}
+            {/* Add a spacing between words that allows wrapping */}
+            {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+          </span>
+        ))}
+      </motion.span>
+    </>
   );
 }
 

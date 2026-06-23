@@ -73,7 +73,7 @@ export default function Advantages() {
   return (
     <section className="relative py-24 bg-dark-bg border-t border-slate-100 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/4 right-1/4 w-[350px] h-[350px] bg-blue-600/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/4 right-1/4 w-[350px] h-[350px] bg-blue-600/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -96,7 +96,7 @@ export default function Advantages() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {advantages.map((item) => {

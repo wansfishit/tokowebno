@@ -17,8 +17,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-dark-bg">
       {/* Background Glows (Static) */}
-      <div className="absolute top-[20%] left-[25%] w-[550px] h-[550px] bg-blue-600/10 rounded-full blur-[110px] pointer-events-none z-0" />
-      <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[90px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute top-[20%] left-[25%] w-[550px] h-[550px] bg-blue-600/10 rounded-full blur-[110px] pointer-events-none z-0" />
+      <div className="hidden sm:block absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[90px] pointer-events-none z-0" />
 
 
       {/* Grid Pattern mask */}

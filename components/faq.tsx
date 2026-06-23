@@ -37,7 +37,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="relative py-24 bg-dark-bg border-t border-slate-100 overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         {/* Section Header */}

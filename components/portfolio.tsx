@@ -38,7 +38,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="relative py-24 bg-dark-bg border-t border-white/5 overflow-hidden">
       {/* Abstract blur backdrop */}
-      <div className="absolute top-1/3 left-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/3 left-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -61,7 +61,7 @@ export default function Portfolio() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:_balance]"
         >
           {portfolios.map((item) => (
@@ -80,6 +80,7 @@ export default function Portfolio() {
                 <img
                   src={item.previewImage}
                   alt={item.name}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 
@@ -168,6 +169,7 @@ export default function Portfolio() {
                 <img
                   src={lightboxImage}
                   alt={lightboxName}
+                  loading="lazy"
                   className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
                 />
                 <div className="py-4 px-2 text-center">

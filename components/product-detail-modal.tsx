@@ -65,6 +65,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
             <img
               src={product.screenshot}
               alt={product.name}
+              loading="lazy"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />

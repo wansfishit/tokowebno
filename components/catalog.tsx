@@ -66,6 +66,7 @@ function ProductCard({ product, onClick }: ProductCardProps) {
           <img
             src={product.thumbnail}
             alt={product.name}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-750 group-hover:scale-105 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -167,7 +168,7 @@ export default function Catalog() {
   return (
     <section id="produk" className="relative py-24 bg-dark-bg border-t border-slate-100 overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 right-0 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -214,6 +215,7 @@ export default function Catalog() {
             <div className="md:col-span-4 relative">
               <ArrowUpDown className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400 pointer-events-none" />
               <select
+                suppressHydrationWarning
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="w-full pl-12 pr-10 py-3.5 bg-white border border-slate-200 focus:border-blue-600/50 rounded-xl text-sm text-slate-900 outline-none appearance-none cursor-pointer transition-all duration-300 shadow-sm"

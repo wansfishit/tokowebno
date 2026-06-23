@@ -15,14 +15,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: #f8fafc;
   color: #0f172a;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #f8fafc;
   color: #0f172a;
+  overflow-x: hidden;
 }
 
 /* Glassmorphism custom classes for light mode */

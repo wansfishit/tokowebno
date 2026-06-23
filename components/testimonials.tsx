@@ -10,7 +10,7 @@ export default function Testimonials() {
   return (
     <section id="testimoni" className="relative py-24 bg-dark-bg border-t border-slate-100 overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
@@ -61,6 +61,7 @@ export default function Testimonials() {
                 <img
                   src={item.avatar}
                   alt={item.name}
+                  loading="lazy"
                   className="w-10 h-10 rounded-full object-cover border border-slate-200"
                 />
                 <div>

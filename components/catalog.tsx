@@ -230,13 +230,13 @@ export default function Catalog() {
             </div>
           </div>
 
-          {/* Category Tabs Grid */}
-          <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-1.5 sm:gap-2 pb-3">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 pb-3">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-semibold text-center transition-all duration-300 ${
+                className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-semibold text-center transition-all duration-300 ${
                   selectedCategory === cat
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20 scale-105"
                     : "bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100"

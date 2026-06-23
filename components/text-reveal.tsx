@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 interface TextRevealProps {
@@ -9,7 +10,17 @@ interface TextRevealProps {
 }
 
 export default function TextReveal({ text, className, delay = 0 }: TextRevealProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   if (!text || typeof text !== "string") return null;
+
+  if (isMobile) {
+    return <span className={className || ""}>{text}</span>;
+  }
 
   // Split text into words to prevent letter-by-letter wrapping on mobile
   const words = text.split(" ");

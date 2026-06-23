@@ -130,45 +130,38 @@ export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("default"); // default, price-asc, price-desc
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Filter and Sort logic
   useEffect(() => {
     if (!productsLoaded) return;
 
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      let result = [...storeProducts];
+    let result = [...storeProducts];
 
-      // Filter by category
-      if (selectedCategory !== "Semua") {
-        result = result.filter((p) => p.category === selectedCategory);
-      }
+    // Filter by category
+    if (selectedCategory !== "Semua") {
+      result = result.filter((p) => p.category === selectedCategory);
+    }
 
-      // Filter by search query
-      if (searchQuery.trim() !== "") {
-        const query = searchQuery.toLowerCase();
-        result = result.filter(
-          (p) =>
-            p.name.toLowerCase().includes(query) ||
-            p.description.toLowerCase().includes(query) ||
-            p.technologies.some((t) => t.toLowerCase().includes(query))
-        );
-      }
+    // Filter by search query
+    if (searchQuery.trim() !== "") {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(
+        (p) =>
+          p.name.toLowerCase().includes(query) ||
+          p.description.toLowerCase().includes(query) ||
+          p.technologies.some((t) => t.toLowerCase().includes(query))
+      );
+    }
 
-      // Sort
-      if (sortBy === "price-asc") {
-        result.sort((a, b) => a.price - b.price);
-      } else if (sortBy === "price-desc") {
-        result.sort((a, b) => b.price - a.price);
-      }
+    // Sort
+    if (sortBy === "price-asc") {
+      result.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-desc") {
+      result.sort((a, b) => b.price - a.price);
+    }
 
-      setFilteredProducts(result);
-      setIsLoading(false);
-    }, 400); // 400ms loading effect
-
-    return () => clearTimeout(timer);
+    setFilteredProducts(result);
   }, [selectedCategory, searchQuery, sortBy, storeProducts, productsLoaded]);
 
   return (
@@ -256,7 +249,7 @@ export default function Catalog() {
         {/* Catalog Grid (Responsive grid: 2 columns on mobile, 3 columns on lg screens) */}
         <div className="relative min-h-[400px]">
           <AnimatePresence mode="popLayout">
-            {isLoading || !productsLoaded ? (
+            {!productsLoaded ? (
               // Skeleton Loading State
               <motion.div
                 initial={{ opacity: 0 }}

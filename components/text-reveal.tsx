@@ -43,37 +43,29 @@ export default function TextReveal({ text, className, delay = 0 }: TextRevealPro
   };
 
   return (
-    <>
-      {/* Static text for mobile (hidden on tablet/desktop) */}
-      <span className={`inline-block md:hidden ${className || ""}`}>
-        {text}
-      </span>
-
-      {/* Animated text for desktop (hidden on mobile) */}
-      <motion.span
-        className={`hidden md:inline-block ${className || ""}`}
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-10px" }}
-      >
-        {words.map((word, wordIndex) => (
-          <span key={wordIndex} className="inline-block whitespace-nowrap">
-            {word.split("").map((char, charIndex) => (
-              <motion.span
-                className="inline-block"
-                variants={child}
-                key={charIndex}
-              >
-                {char}
-              </motion.span>
-            ))}
-            {/* Add a spacing between words that allows wrapping */}
-            {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
-          </span>
-        ))}
-      </motion.span>
-    </>
+    <motion.span
+      className={`inline-block ${className || ""}`}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, margin: "-50px" }}
+    >
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              className="inline-block"
+              variants={child}
+              key={charIndex}
+            >
+              {char}
+            </motion.span>
+          ))}
+          {/* Add a spacing between words that allows wrapping */}
+          {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
+      ))}
+    </motion.span>
   );
 }
 

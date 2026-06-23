@@ -103,7 +103,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
                   <span>Fitur Unggulan</span>
                 </h3>
                 <ul className="space-y-2">
-                  {product.features.map((feature, idx) => (
+                  {(product.features || []).map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs text-slate-750">
                       <CheckCircle className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
                       <span>{feature}</span>
@@ -119,7 +119,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
                   <span>Teknologi</span>
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {product.technologies.map((tech) => (
+                  {(product.technologies || []).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 bg-slate-50 border border-slate-200 text-[10px] font-mono text-slate-650 rounded"

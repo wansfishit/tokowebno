@@ -35,7 +35,7 @@ export default function CinematicIntro() {
       const t5 = setTimeout(() => {
         setLoading(false);
         if (typeof window !== "undefined") {
-          document.body.style.overflow = "unset";
+          document.body.style.overflow = "";
         }
       }, 750);
       return () => clearTimeout(t5);
@@ -52,7 +52,7 @@ export default function CinematicIntro() {
       clearTimeout(t3);
       clearTimeout(t4);
       if (typeof window !== "undefined") {
-        document.body.style.overflow = "unset";
+        document.body.style.overflow = "";
       }
     };
   }, []);

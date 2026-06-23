@@ -60,7 +60,7 @@ export default function FAQ() {
           variants={faqZoomVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-20px" }}
+          viewport={{ once: false, margin: "-20px" }}
           className="space-y-4"
         >
           {faqs.map((item, idx) => {

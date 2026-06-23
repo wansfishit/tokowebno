@@ -149,9 +149,9 @@ export default function Catalog() {
       const query = searchQuery.toLowerCase();
       result = result.filter(
         (p) =>
-          p.name.toLowerCase().includes(query) ||
-          p.description.toLowerCase().includes(query) ||
-          p.technologies.some((t) => t.toLowerCase().includes(query))
+          (p.name?.toLowerCase() || "").includes(query) ||
+          (p.description?.toLowerCase() || "").includes(query) ||
+          (p.technologies || []).some((t) => (t?.toLowerCase() || "").includes(query))
       );
     }
 
@@ -274,13 +274,13 @@ export default function Catalog() {
                 ))}
               </motion.div>
             ) : filteredProducts.length > 0 ? (
-              // Active Product Grid
+              // Active Product Grid — use animate (not whileInView) so filter changes always trigger animation
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-20px" }}
-                key="products"
+                animate="visible"
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+                key={selectedCategory + searchQuery + sortBy}
                 className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6"
               >
                 {filteredProducts.map((product) => (

@@ -9,6 +9,9 @@ import BackToTop from "@/components/back-to-top";
 // Advanced animation elements
 import ScrollProvider from "@/components/scroll-provider";
 import ScrollProgress from "@/components/scroll-progress";
+import CinematicIntro from "@/components/cinematic-intro";
+
+import ErrorBoundary from "@/components/error-boundary";
 
 export default function Home() {
   return (
@@ -21,6 +24,8 @@ export default function Home() {
         {/* Scroll Progress Indicator */}
         <ScrollProgress />
 
+        {/* Cinematic Opening Intro */}
+        <CinematicIntro />
 
         {/* Navigation */}
         <Navbar />
@@ -30,7 +35,9 @@ export default function Home() {
           <Hero />
 
           {/* Katalog Website (Catalog) */}
-          <Catalog />
+          <ErrorBoundary>
+            <Catalog />
+          </ErrorBoundary>
 
           {/* FAQ Accordion */}
           <FAQ />

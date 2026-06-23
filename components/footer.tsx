@@ -39,7 +39,7 @@ export default function Footer() {
       variants={footerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-20px" }}
+      viewport={{ once: false, margin: "-20px" }}
       style={{ perspective: 1000 }}
       className="bg-slate-50 border-t border-slate-200 pt-16 pb-8 overflow-hidden relative"
     >

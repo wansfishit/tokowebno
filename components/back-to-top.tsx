@@ -31,11 +31,20 @@ export default function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 15 }}
+          exit={{ opacity: 0, y: 16 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 p-3.5 bg-white border border-slate-200 hover:border-slate-350 text-slate-500 hover:text-slate-900 rounded-full shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 hover:bg-slate-50 focus:outline-none"
+          className="fixed bottom-6 left-6 z-45 p-3.5 text-slate-700 hover:text-slate-900 transition-colors focus:outline-none shadow-[0_8px_24px_rgba(0,0,0,0.06)] cursor-pointer"
+          style={{
+            background: "rgba(255, 255, 255, 0.75)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(255, 255, 255, 0.5)",
+            borderRadius: 999,
+          }}
           aria-label="Kembali ke atas"
         >
           <ArrowUp className="w-5 h-5" />

@@ -30,23 +30,29 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
-      {/* Backdrop */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+      {/* Backdrop — Deep iOS blur */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm cursor-pointer"
+        className="absolute inset-0 bg-slate-950/30 backdrop-blur-md cursor-pointer"
       />
 
-      {/* Modal Content Wrapper */}
+      {/* Modal Content Wrapper — Premium iOS Liquid Glass modal */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        initial={{ opacity: 0, scale: 0.95, y: 24 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-slate-200 rounded-2xl overflow-y-auto z-10 flex flex-col shadow-2xl scrollbar-thin"
+        exit={{ opacity: 0, scale: 0.95, y: 24 }}
+        transition={{ type: "spring", stiffness: 350, damping: 28 }}
+        className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto z-10 flex flex-col shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] scrollbar-thin border border-white/60"
+        style={{
+          background: "rgba(255, 255, 255, 0.85)",
+          backdropFilter: "blur(32px)",
+          WebkitBackdropFilter: "blur(32px)",
+          borderRadius: 28,
+        }}
         data-lenis-prevent
       >
         {/* Close Button */}

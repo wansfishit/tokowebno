@@ -9,8 +9,14 @@ export default function WhatsAppButton() {
 
   return (
     <div className="group fixed bottom-6 right-6 z-40 flex items-center justify-end">
-      {/* Tooltip text (shown on hover) */}
-      <div className="absolute right-16 px-3.5 py-2 bg-slate-900 rounded-xl text-white text-xs font-semibold shadow-2xl opacity-0 translate-x-4 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap bg-opacity-95 backdrop-blur-md hidden sm:block">
+      <div 
+        className="absolute right-16 px-3.5 py-2 rounded-xl text-white text-xs font-semibold shadow-xl opacity-0 translate-x-4 pointer-events-none group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap hidden sm:block border border-white/10"
+        style={{
+          background: "rgba(15, 23, 42, 0.8)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+        }}
+      >
         Tanya Detail Website
       </div>
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getWhatsAppUrl } from "@/lib/utils";
+import { useSettingsStore } from "@/lib/store";
 
 const menuItems = [
   { name: "Beranda", href: "#" },
@@ -14,6 +15,7 @@ const menuItems = [
 ];
 
 export default function Navbar() {
+  const { settings } = useSettingsStore();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -80,7 +82,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <a
-            href={getWhatsAppUrl()}
+            href={getWhatsAppUrl(undefined, settings.phone)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-blue-600/20"
@@ -122,7 +124,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href={getWhatsAppUrl()}
+                href={getWhatsAppUrl(undefined, settings.phone)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}

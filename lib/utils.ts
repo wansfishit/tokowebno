@@ -14,21 +14,7 @@ export function formatCurrency(value: number): string {
   }).format(value);
 }
 
-export function getWhatsAppUrl(productName?: string): string {
-  const defaultPhone = "6281378821654";
-  let phone = defaultPhone;
-
-  if (typeof window !== "undefined") {
-    try {
-      const storedPhone = localStorage.getItem("tokowebno_phone");
-      if (storedPhone) {
-        phone = storedPhone;
-      }
-    } catch {
-      // ignore
-    }
-  }
-
+export function getWhatsAppUrl(productName?: string, phone: string = "6281378821654"): string {
   if (!productName) {
     return `https://wa.me/${phone}?text=${encodeURIComponent("Halo, saya ingin bertanya tentang jasa pembuatan website custom di TokoWebNo.")}`;
   }

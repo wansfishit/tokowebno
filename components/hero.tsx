@@ -66,7 +66,7 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href={getWhatsAppUrl()}
+            href={getWhatsAppUrl(undefined, settings.phone)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl shadow-blue-600/30"

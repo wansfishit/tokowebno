@@ -5,6 +5,7 @@ import { X, CheckCircle, ExternalLink, MessageSquare, Terminal } from "lucide-re
 import { motion } from "framer-motion";
 import { Product } from "@/types";
 import { formatCurrency, getWhatsAppUrl } from "@/lib/utils";
+import { useSettingsStore } from "@/lib/store";
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -12,15 +13,17 @@ interface ProductDetailModalProps {
 }
 
 export default function ProductDetailModal({ product, onClose }: ProductDetailModalProps) {
+  const { settings } = useSettingsStore();
+
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (product) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [product]);
 
@@ -44,6 +47,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-slate-200 rounded-2xl overflow-y-auto z-10 flex flex-col shadow-2xl scrollbar-thin"
+        data-lenis-prevent
       >
         {/* Close Button */}
         <button
@@ -138,7 +142,7 @@ export default function ProductDetailModal({ product, onClose }: ProductDetailMo
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
               <a
-                href={getWhatsAppUrl(product.name)}
+                href={getWhatsAppUrl(product.name, settings.phone)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-1.5 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-lg shadow-blue-600/10 hover:scale-[1.02] active:scale-[0.98]"

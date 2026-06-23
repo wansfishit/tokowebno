@@ -52,6 +52,8 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product, onClick }: ProductCardProps) {
+  const { settings } = useSettingsStore();
+
   return (
     <motion.div
       variants={cardVariants}
@@ -107,7 +109,7 @@ function ProductCard({ product, onClick }: ProductCardProps) {
           <span>Demo</span>
         </a>
         <a
-          href={getWhatsAppUrl(product.name)}
+          href={getWhatsAppUrl(product.name, settings.phone)}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()} // Prevent modal trigger
@@ -199,6 +201,7 @@ export default function Catalog() {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
               <input
                 type="text"
+                suppressHydrationWarning
                 placeholder={settings.searchPlaceholder || "Cari website impian Anda (contoh: Toko Hijab, SaaS)..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

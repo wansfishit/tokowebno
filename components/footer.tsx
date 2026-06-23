@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { MessageSquare, ArrowUpRight } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/utils";
+import { useSettingsStore } from "@/lib/store";
 
 const footerLinks = [
   { name: "Beranda", href: "#" },
@@ -29,6 +30,7 @@ const footerVariants = {
 };
 
 export default function Footer() {
+  const { settings } = useSettingsStore();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -87,7 +89,7 @@ export default function Footer() {
             Punya ide proyek website baru? Konsultasikan ide Anda bersama tim developer kami sekarang juga secara gratis.
           </p>
           <a
-            href={getWhatsAppUrl()}
+            href={getWhatsAppUrl(undefined, settings.phone)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 self-start px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-lg shadow-blue-600/10 active:scale-95"

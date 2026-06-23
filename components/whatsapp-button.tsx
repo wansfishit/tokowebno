@@ -2,8 +2,11 @@
 
 import { MessageCircle } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/utils";
+import { useSettingsStore } from "@/lib/store";
 
 export default function WhatsAppButton() {
+  const { settings } = useSettingsStore();
+
   return (
     <div className="group fixed bottom-6 right-6 z-40 flex items-center justify-end">
       {/* Tooltip text (shown on hover) */}
@@ -13,7 +16,7 @@ export default function WhatsAppButton() {
 
       {/* WhatsApp Button Link */}
       <a
-        href={getWhatsAppUrl()}
+        href={getWhatsAppUrl(undefined, settings.phone)}
         target="_blank"
         rel="noopener noreferrer"
         className="group relative flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 rounded-full shadow-2xl transition-transform duration-300 hover:scale-110 active:scale-95 text-white"

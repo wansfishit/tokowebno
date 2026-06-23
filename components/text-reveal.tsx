@@ -9,8 +9,10 @@ interface TextRevealProps {
 }
 
 export default function TextReveal({ text, className, delay = 0 }: TextRevealProps) {
-  // Split text into letters, preserving whitespace using non-breaking space
-  const letters = text.split("").map((char) => (char === " " ? "\u00A0" : char));
+  if (!text || typeof text !== "string") return null;
+
+  // Split text into words to prevent letter-by-letter wrapping on mobile
+  const words = text.split(" ");
 
   const container = {
     hidden: { opacity: 0 },
@@ -47,17 +49,24 @@ export default function TextReveal({ text, className, delay = 0 }: TextRevealPro
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: "-50px" }}
+      viewport={{ once: true, margin: "-10px" }}
     >
-      {letters.map((letter, index) => (
-        <motion.span
-          className="inline-block"
-          variants={child}
-          key={index}
-        >
-          {letter}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <motion.span
+              className="inline-block"
+              variants={child}
+              key={charIndex}
+            >
+              {char}
+            </motion.span>
+          ))}
+          {/* Add a spacing between words that allows wrapping */}
+          {wordIndex < words.length - 1 && <span className="inline-block">&nbsp;</span>}
+        </span>
       ))}
     </motion.span>
   );
 }
+

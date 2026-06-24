@@ -1,45 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Tag, Sparkles, Smartphone, Search, Zap, HeartHandshake, ShieldCheck } from "lucide-react";
+import { Globe, Palette, Smartphone, Zap, ShieldCheck, MessageSquare, Cloud } from "lucide-react";
 import TextReveal from "./text-reveal";
 
 const advantages = [
   {
-    icon: Tag,
-    title: "Harga Terjangkau",
-    description: "Layanan pembuatan website premium dengan harga ekonomis mulai dari Rp150.000 saja tanpa biaya tersembunyi.",
-    color: "text-emerald-600 bg-emerald-500/10 border-emerald-500/20",
-  },
-  {
-    icon: Sparkles,
-    title: "Desain Modern",
-    description: "Kami mendesain dengan kiblat tren tahun 2026. Tampilan premium, bersih, elegan, dan menawan di mata pengunjung.",
-    color: "text-purple-600 bg-purple-500/10 border-purple-500/20",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Responsive",
-    description: "Website dijamin 100% responsif. Tampil sempurna dan fungsional di perangkat smartphone, tablet, laptop, hingga desktop.",
+    icon: Globe,
+    title: "Custom Domain Sendiri",
+    description: "Bisa menggunakan nama domain kustom Anda sendiri (seperti .com, .id, .net, .co.id) agar bisnis Anda tampil profesional.",
     color: "text-blue-600 bg-blue-500/10 border-blue-500/20",
   },
   {
-    icon: Search,
-    title: "SEO Friendly",
-    description: "Struktur HTML semantik standar industri tinggi untuk mempermudah Google mengindeks website Anda di halaman teratas.",
-    color: "text-amber-600 bg-amber-500/10 border-amber-500/20",
+    icon: Palette,
+    title: "Kustomisasi Bebas (Customizable)",
+    description: "Bebas kustomisasi warna, nama, logo, teks, gambar, hingga layout agar sesuai dengan branding unik usaha Anda.",
+    color: "text-purple-600 bg-purple-500/10 border-purple-500/20",
   },
   {
-    icon: Zap,
-    title: "Loading Cepat",
-    description: "Ditenagai oleh framework modern Next.js 15. Server-side rendering (SSR) menghasilkan pemuatan halaman secepat kedipan mata.",
+    icon: MessageSquare,
+    title: "Integrasi Chat WhatsApp",
+    description: "Memudahkan pelanggan menghubungi atau memesan jasa Anda lewat tombol chat dan formulir interaktif langsung ke WhatsApp.",
+    color: "text-emerald-600 bg-emerald-500/10 border-emerald-500/20",
+  },
+  {
+    icon: Smartphone,
+    title: "Desain Mobile Responsive",
+    description: "Tampilan website otomatis responsif dan menyesuaikan layar HP, tablet, maupun laptop Anda secara sempurna.",
+    color: "text-rose-600 bg-rose-500/10 border-rose-500/20",
+  },
+  {
+    icon: Cloud,
+    title: "Gratis Hosting & SSL Aman",
+    description: "Kami urus servernya! Sudah termasuk hosting cepat berkecepatan tinggi serta sertifikat SSL gratis (https://).",
     color: "text-cyan-600 bg-cyan-500/10 border-cyan-500/20",
   },
   {
-    icon: HeartHandshake,
-    title: "Support Setelah Pembelian",
-    description: "Konsultasi gratis dan bantuan teknis pasca-pembelian untuk memastikan website Anda berjalan mulus tanpa kendala.",
-    color: "text-rose-600 bg-rose-500/10 border-rose-500/20",
+    icon: Zap,
+    title: "Optimasi SEO & Cepat",
+    description: "Website dibuat dengan standar optimasi SEO terbaru dan kecepatan loading maksimal agar mudah bersaing di Google.",
+    color: "text-amber-600 bg-amber-500/10 border-amber-500/20",
   },
 ];
 

@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
+import Advantages from "@/components/advantages";
 import Catalog from "@/components/catalog";
 import FAQ from "@/components/faq";
 import Footer from "@/components/footer";
@@ -33,6 +34,9 @@ export default function Home() {
         <main className="relative z-10">
           {/* Hero Section */}
           <Hero />
+
+          {/* Fitur & Kustomisasi Lengkap */}
+          <Advantages />
 
           {/* Katalog Website (Catalog) */}
           <ErrorBoundary>
